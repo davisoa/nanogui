@@ -39,6 +39,13 @@ if(APPLE AND NANOGUI_BUILD_SHARED)
   set(CMAKE_MACOSX_RPATH ON)
 endif()
 
+catkin_package(
+#  INCLUDE_DIRS include
+#  LIBRARIES nanogui-python
+#  CATKIN_DEPENDS message_generation rospy
+#  DEPENDS system_lib
+)
+
 include(CheckCXXCompilerFlag)
 include(CheckCXXSourceRuns)
 
@@ -462,7 +469,10 @@ if (NANOGUI_BUILD_PYTHON)
     set_property(TARGET nanogui-python-obj APPEND PROPERTY COMPILE_OPTIONS "-Wno-unused-variable")
   endif()
 
-  set_target_properties(nanogui-python PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/python)
+  set_target_properties(nanogui-python PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_PYTHON_DESTINATION}/..)
+  # Also copy the nanogui.py file so python can load the SO file
+  file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/python/nanogui.py DESTINATION ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_LIB_DESTINATION}/../nanogui.py)
+  
   # The prefix and extension are provided by FindPythonLibsNew.cmake
   set_target_properties(nanogui-python PROPERTIES PREFIX "${PYTHON_MODULE_PREFIX}")
   set_target_properties(nanogui-python PROPERTIES SUFFIX "${PYTHON_MODULE_EXTENSION}")
