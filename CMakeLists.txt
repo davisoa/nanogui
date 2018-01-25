@@ -471,7 +471,7 @@ if (NANOGUI_BUILD_PYTHON)
 
   set_target_properties(nanogui-python PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_PYTHON_DESTINATION}/..)
   # Also copy the nanogui.py file so python can load the SO file
-  file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/python/nanogui.py DESTINATION ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_LIB_DESTINATION}/../nanogui.py)
+  file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/python/nanogui.py DESTINATION ${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_PYTHON_DESTINATION}/..)
   
   # The prefix and extension are provided by FindPythonLibsNew.cmake
   set_target_properties(nanogui-python PROPERTIES PREFIX "${PYTHON_MODULE_PREFIX}")
