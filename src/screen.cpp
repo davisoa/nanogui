@@ -28,8 +28,8 @@
 
 #  define GLFW_EXPOSE_NATIVE_WGL
 #  define GLFW_EXPOSE_NATIVE_WIN32
-#  include <GLFW/glfw3native.h>
 #endif
+#include <GLFW/glfw3native.h>
 
 /* Allow enforcing the GL2 implementation of NanoVG */
 #define NANOVG_GL3_IMPLEMENTATION
@@ -695,6 +695,11 @@ void Screen::moveWindowToFront(Window *window) {
             }
         }
     } while (changed);
+}
+
+long Screen::getNativeWindowHandle() { 
+    return glfwGetX11Window( mGLFWWindow ); 
+    
 }
 
 NAMESPACE_END(nanogui)

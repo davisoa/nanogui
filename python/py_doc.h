@@ -2460,6 +2460,8 @@ static const char *__doc_nanogui_Screen_moveWindowToFront = R"doc()doc";
 
 static const char *__doc_nanogui_Screen_nvgContext = R"doc(Return a pointer to the underlying nanoVG draw context)doc";
 
+static const char *__doc_nanogui_Screen_getNativeWindowHandle = R"doc(Returns the native window handle for the screen)doc";
+
 static const char *__doc_nanogui_Screen_operator_delete = R"doc()doc";
 
 static const char *__doc_nanogui_Screen_operator_delete_2 = R"doc()doc";

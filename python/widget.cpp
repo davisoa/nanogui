@@ -48,6 +48,7 @@ void register_widget(py::module &m) {
         .def("removeChild", (void(Widget::*)(const Widget *)) &Widget::removeChild, D(Widget, removeChild, 2))
         .def("__delitem__", (void(Widget::*)(int)) &Widget::removeChild, D(Widget, removeChild, 2))
         .def("window", &Widget::window, D(Widget, window))
+        .def("screen", &Widget::screen, D(Widget, screen))
         .def("setId", &Widget::setId, D(Widget, setId))
         .def("id", &Widget::id, D(Widget, id))
         .def("enabled", &Widget::enabled, D(Widget, enabled))
@@ -117,6 +118,8 @@ void register_widget(py::module &m) {
         .def("glfwWindow", &Screen::glfwWindow, D(Screen, glfwWindow),
                 py::return_value_policy::reference)
         .def("nvgContext", &Screen::nvgContext, D(Screen, nvgContext),
-                py::return_value_policy::reference);
+                py::return_value_policy::reference)
+        .def("getNativeWindowHandle", &Screen::getNativeWindowHandle, D(Screen, getNativeWindowHandle));
+        
 }
 #endif

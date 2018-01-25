@@ -148,6 +148,9 @@ public:
         Widget::performLayout(mNVGContext);
     }
 
+    /// Returns the native window handle for the screen
+    long getNativeWindowHandle();
+
 public:
     /********* API for applications which manage GLFW themselves *********/
 
